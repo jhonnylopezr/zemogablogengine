@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2042
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Zemoga.BlogEngine.Database", "Zemoga.BlogEngine.Database\Zemoga.BlogEngine.Database.sqlproj", "{7C9EE9F7-53FA-4D73-B3D2-DF0FE44C2028}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zemoga.BlogEngine.Web", "Zemoga.BlogEngine.Web\Zemoga.BlogEngine.Web.csproj", "{9FF99B03-4110-431B-902F-E68C01821F8F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZemogaBlogEngine.Entities", "ZemogaBlogEngine.Entities\ZemogaBlogEngine.Entities.csproj", "{AE0C63C5-C5F7-456D-B3AA-8171BD5669E3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7C9EE9F7-53FA-4D73-B3D2-DF0FE44C2028}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C9EE9F7-53FA-4D73-B3D2-DF0FE44C2028}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C9EE9F7-53FA-4D73-B3D2-DF0FE44C2028}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{7C9EE9F7-53FA-4D73-B3D2-DF0FE44C2028}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C9EE9F7-53FA-4D73-B3D2-DF0FE44C2028}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C9EE9F7-53FA-4D73-B3D2-DF0FE44C2028}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{9FF99B03-4110-431B-902F-E68C01821F8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FF99B03-4110-431B-902F-E68C01821F8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FF99B03-4110-431B-902F-E68C01821F8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FF99B03-4110-431B-902F-E68C01821F8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE0C63C5-C5F7-456D-B3AA-8171BD5669E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE0C63C5-C5F7-456D-B3AA-8171BD5669E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE0C63C5-C5F7-456D-B3AA-8171BD5669E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE0C63C5-C5F7-456D-B3AA-8171BD5669E3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {64A89B2E-320F-4F5E-A954-45E9E0AD5DFE}
+	EndGlobalSection
+EndGlobal
