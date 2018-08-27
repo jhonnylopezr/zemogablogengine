@@ -44,13 +44,14 @@ namespace Zemoga.BlogEngine.Web
         private static void MapModelsToViewModels()
         {
             Mapper.CreateMap<BlogPost, PostViewModel>();
-
+            Mapper.CreateMap<BlogPost, EditPostViewModel>();
         }
 
         private static void MapViewModelsToModels()
         {
             Mapper.CreateMap<CreateBlogPostViewModel, BlogPost>();
             Mapper.CreateMap<CreateCommentViewModel, PostComment>();
+            Mapper.CreateMap<EditPostViewModel, BlogPost>();
         }
     }
 }

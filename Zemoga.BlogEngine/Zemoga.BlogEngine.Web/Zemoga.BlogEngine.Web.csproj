@@ -227,6 +227,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BlogPosts\CreateBlogPostViewModel.cs" />
     <Compile Include="Models\BlogPosts\CreateCommentViewModel.cs" />
+    <Compile Include="Models\BlogPosts\EditPostViewModel.cs" />
     <Compile Include="Models\BlogPosts\PostCommentsViewModel.cs" />
     <Compile Include="Models\BlogPosts\PostViewModel.cs" />
     <Compile Include="Models\Home\IndexViewModel.cs" />
@@ -472,6 +473,7 @@
     <Content Include="Views\BlogPosts\Post.cshtml" />
     <Content Include="Views\BlogPosts\PostCommentsList.cshtml" />
     <Content Include="Views\BlogPosts\CommentForm.cshtml" />
+    <Content Include="Views\BlogPosts\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

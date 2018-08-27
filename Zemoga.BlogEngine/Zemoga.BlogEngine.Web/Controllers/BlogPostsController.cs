@@ -113,5 +113,39 @@ namespace Zemoga.BlogEngine.Web.Controllers
 
             return View(model);
         }
+
+        [Authorize]
+        public ActionResult Edit(int id)
+        {
+            BlogPost post = _blogPostsServices.Find(id);
+
+            if (post.AspNetUser.UserName != User.Identity.Name)
+            {
+                return new HttpStatusCodeResult(System.Net.HttpStatusCode.Unauthorized);
+            }
+
+            EditPostViewModel model = Mapper.Map<BlogPost, EditPostViewModel>(post);
+
+            return View(model);
+        }
+
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(EditPostViewModel model)
+        {
+            BlogPost post = _blogPostsServices.Find(model.Id);
+
+            if (post.AspNetUser.UserName != User.Identity.Name)
+            {
+                return new HttpStatusCodeResult(System.Net.HttpStatusCode.Unauthorized);
+            }
+
+            Mapper.Map<EditPostViewModel, BlogPost>(model, post);
+            post.IsPublished = false;
+            _blogPostsServices.Update(post);
+
+            return RedirectToAction("Post", new { id = model.Id });
+        }
     }
 }
