@@ -4,9 +4,16 @@ namespace ZemogaBlogEngine.Entities
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+    using System.Data.Entity.Infrastructure;
+    using ZemogaBlogEngine.Entities.Mapping;
 
     public partial class BlogEngineContext : DbContext, IBlogEngineContext
     {
+        static BlogEngineContext()
+        {
+            Database.SetInitializer<BlogEngineContext>(null);
+        }
+
         public BlogEngineContext()
             : base("name=BlogEngineContext")
         {
@@ -17,29 +24,38 @@ namespace ZemogaBlogEngine.Entities
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<BlogPost> BlogPosts { get; set; }
+        public virtual DbSet<PostComment> PostComments { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<AspNetRole>()
-                .HasMany(e => e.AspNetUsers)
-                .WithMany(e => e.AspNetRoles)
-                .Map(m => m.ToTable("AspNetUserRoles").MapLeftKey("RoleId").MapRightKey("UserId"));
+            modelBuilder.Configurations.Add(new AspNetRoleMap());
+            modelBuilder.Configurations.Add(new AspNetUserMap());
+            modelBuilder.Configurations.Add(new BlogPostMap());
+        }
 
-            modelBuilder.Entity<AspNetUser>()
-                .HasMany(e => e.AspNetUserClaims)
-                .WithRequired(e => e.AspNetUser)
-                .HasForeignKey(e => e.UserId);
+        public virtual T EntryWithState<T>(T entity, EntityState state) where T : class
+        {
+            if (entity == null)
+                return null;
 
-            modelBuilder.Entity<AspNetUser>()
-                .HasMany(e => e.AspNetUserLogins)
-                .WithRequired(e => e.AspNetUser)
-                .HasForeignKey(e => e.UserId);
+            var objContext = ((IObjectContextAdapter)this).ObjectContext;
+            var objSet = objContext.CreateObjectSet<T>();
+            var entityKey = objContext.CreateEntityKey(objSet.EntitySet.Name, entity);
 
-            modelBuilder.Entity<AspNetUser>()
-                .HasMany(e => e.BlogPosts)
-                .WithRequired(e => e.AspNetUser)
-                .HasForeignKey(e => e.UserId)
-                .WillCascadeOnDelete(false);
+            object foundState;
+
+            var exists = objContext.TryGetObjectByKey(entityKey, out foundState);
+            if (exists)
+            {
+                objContext.ObjectStateManager.ChangeObjectState(foundState, state);
+                return (foundState as T);
+            }
+            else
+            {
+                DbEntityEntry entry = this.Entry(entity);
+                entry.State = state;
+                return entry.Entity as T;
+            }
         }
     }
 }

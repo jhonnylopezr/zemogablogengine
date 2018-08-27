@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zemoga.BlogEngine.Web", "Ze
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZemogaBlogEngine.Entities", "ZemogaBlogEngine.Entities\ZemogaBlogEngine.Entities.csproj", "{AE0C63C5-C5F7-456D-B3AA-8171BD5669E3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zemoga.BlogEngine.Services", "Zemoga.BlogEngine.Services\Zemoga.BlogEngine.Services.csproj", "{959E428A-AC68-4E24-87F6-9940DBDCDB8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zemoga.BlogEngine.Resources", "Zemoga.BlogEngine.Resources\Zemoga.BlogEngine.Resources.csproj", "{6409812F-193B-4D83-B75F-F221C0EE1B90}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,11 +33,20 @@ Global
 		{AE0C63C5-C5F7-456D-B3AA-8171BD5669E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE0C63C5-C5F7-456D-B3AA-8171BD5669E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE0C63C5-C5F7-456D-B3AA-8171BD5669E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{959E428A-AC68-4E24-87F6-9940DBDCDB8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{959E428A-AC68-4E24-87F6-9940DBDCDB8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{959E428A-AC68-4E24-87F6-9940DBDCDB8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{959E428A-AC68-4E24-87F6-9940DBDCDB8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6409812F-193B-4D83-B75F-F221C0EE1B90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6409812F-193B-4D83-B75F-F221C0EE1B90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6409812F-193B-4D83-B75F-F221C0EE1B90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6409812F-193B-4D83-B75F-F221C0EE1B90}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35
 		SolutionGuid = {64A89B2E-320F-4F5E-A954-45E9E0AD5DFE}
 	EndGlobalSection
 EndGlobal

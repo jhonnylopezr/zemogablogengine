@@ -56,11 +56,16 @@
     <Compile Include="BlogEngineContext.cs" />
     <Compile Include="BlogPost.cs" />
     <Compile Include="IBlogEngineContext.cs" />
+    <Compile Include="Mapping\AspNetRoleMap.cs" />
+    <Compile Include="Mapping\AspNetUserMap.cs" />
+    <Compile Include="Mapping\BlogPostMap.cs" />
+    <Compile Include="PostComment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

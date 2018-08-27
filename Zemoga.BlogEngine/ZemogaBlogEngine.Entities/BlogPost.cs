@@ -8,25 +8,23 @@ namespace ZemogaBlogEngine.Entities
 
     public partial class BlogPost
     {
+        public BlogPost()
+        {
+            this.CreatedOn = DateTime.Now;
+            this.LastModifiedOn = DateTime.Now;
+            this.IsPublished = false;
+            this.Comments = new List<PostComment>();
+        }
+
         public int Id { get; set; }
-
-        [Required]
-        [StringLength(255)]
         public string Title { get; set; }
-
-        [Required]
         public string PostContent { get; set; }
-
-        [Required]
-        [StringLength(128)]
         public string UserId { get; set; }
-
-        [Column(TypeName = "smalldatetime")]
         public DateTime CreatedOn { get; set; }
-
-        [Column(TypeName = "smalldatetime")]
         public DateTime LastModifiedOn { get; set; }
+        public bool IsPublished { get; set; }
 
         public virtual AspNetUser AspNetUser { get; set; }
+        public virtual ICollection<PostComment> Comments { get; set; }
     }
 }

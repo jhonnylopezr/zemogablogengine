@@ -9,6 +9,7 @@ namespace Zemoga.BlogEngine.Web
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+            Bootstrapper.Initialise();
         }
     }
 }

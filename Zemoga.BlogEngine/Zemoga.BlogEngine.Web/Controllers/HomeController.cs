@@ -3,28 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Zemoga.BlogEngine.Services.Interfaces;
+using Zemoga.BlogEngine.Web.Models.Home;
 
 namespace Zemoga.BlogEngine.Web.Controllers
 {
     public class HomeController : Controller
     {
+        IBlogPostsServices _blogPostsServices;
+
+        public HomeController(IBlogPostsServices blogPostsServices)
+        {
+            _blogPostsServices = blogPostsServices;
+        }
+
         public ActionResult Index()
         {
-            return View();
+            IndexViewModel model = new IndexViewModel();
+            model.BlogPosts = _blogPostsServices.GetAll(includeNotPublished: User.Identity.IsAuthenticated);
+            return View(model);
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
+        
     }
 }
