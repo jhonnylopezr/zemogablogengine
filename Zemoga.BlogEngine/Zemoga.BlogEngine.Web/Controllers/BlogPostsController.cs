@@ -34,7 +34,6 @@ namespace Zemoga.BlogEngine.Web.Controllers
         [Authorize]
         [ValidateAntiForgeryToken()]
         [HttpPost]
-        
         public ActionResult Create(CreateBlogPostViewModel model)
         {
             if (ModelState.IsValid)
@@ -49,6 +48,71 @@ namespace Zemoga.BlogEngine.Web.Controllers
             return View(model);
         }
 
-        
+        public ActionResult Post(int id)
+        {
+            BlogPost post = _blogPostsServices.Find(id);
+
+            PostViewModel model = Mapper.Map<BlogPost, PostViewModel>(post);
+
+            model.AllowToPublish = !model.IsPublished && (User.Identity.IsAuthenticated && User.Identity.Name == model.AspNetUser.UserName);
+            model.AllowToEdit = User.Identity.Name == model.AspNetUser.UserName;
+
+            return View(model);
+        }
+
+        [Authorize]
+        [ValidateAntiForgeryToken()]
+        [HttpPost]
+        public ActionResult Publish(int id)
+        {
+            BlogPost post = _blogPostsServices.Find(id);
+            post.IsPublished = true;
+            post.LastModifiedOn = DateTime.Now;
+
+            _blogPostsServices.Update(post);
+
+            return RedirectToAction("Post", new { id = id });
+        }
+
+        public ActionResult PostCommentsList(int id)
+        {
+            PostCommentsViewModel model = new PostCommentsViewModel();
+
+            model.Comments = _postCommentsServices.GetCommentsByPost(id);
+
+            return View(model);
+        }
+
+        public ActionResult CommentForm(int postId)
+        {
+            CreateCommentViewModel model = new CreateCommentViewModel();
+            model.BlogPostId = postId;
+            AspNetUser user = _securityServices.GetUserByUserName(User.Identity.Name);
+
+            if (user != null)
+            {
+                model.AuthorEmail = user.Email;
+                model.AuthorName = user.FullName;
+            }
+
+            return View(model);
+        }
+
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CommentForm(CreateCommentViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                PostComment comment = Mapper.Map<CreateCommentViewModel, PostComment>(model);
+
+                _postCommentsServices.Add(comment);
+
+                return RedirectToAction("Post", new { id = model.BlogPostId });
+            }
+
+            return View(model);
+        }
     }
 }

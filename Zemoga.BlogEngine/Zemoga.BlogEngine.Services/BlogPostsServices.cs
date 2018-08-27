@@ -43,7 +43,7 @@ namespace Zemoga.BlogEngine.Services
         {
             return Context.BlogPosts
                 .Where(it => includeNotPublished || it.IsPublished)
-                .OrderBy(it => it.CreatedOn)
+                .OrderByDescending(it => it.CreatedOn)
                 .ToList();
 
         }
@@ -51,7 +51,7 @@ namespace Zemoga.BlogEngine.Services
         public List<BlogPost> GetPosts(int startIndex = 0, int pageSize = 0)
         {
             var query = Context.BlogPosts
-                .OrderBy("CreatedOn");
+                .OrderByDescending("CreatedOn");
 
             if (pageSize > 0)
             {

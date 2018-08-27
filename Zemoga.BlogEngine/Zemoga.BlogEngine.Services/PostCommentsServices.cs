@@ -43,6 +43,7 @@ namespace Zemoga.BlogEngine.Services
         {
             return Context.PostComments
                 .Where(it => it.BlogPostId == postId)
+                .OrderByDescending(it => it.CreatedOn)
                 .ToList();
         }
 

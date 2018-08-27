@@ -117,14 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AuthorEmail" xml:space="preserve">
+    <value>Your Email</value>
+  </data>
+  <data name="AuthorName" xml:space="preserve">
+    <value>Your Name</value>
+  </data>
+  <data name="Comment" xml:space="preserve">
+    <value>Your Comment</value>
+  </data>
   <data name="Create" xml:space="preserve">
     <value>Write a new post</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
   </data>
   <data name="PostContent" xml:space="preserve">
     <value>Content</value>
   </data>
   <data name="PostDetails" xml:space="preserve">
     <value>Post details</value>
+  </data>
+  <data name="Publish" xml:space="preserve">
+    <value>Publish</value>
+  </data>
+  <data name="SubmitAComment" xml:space="preserve">
+    <value>Submit a comment</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Title</value>

@@ -61,11 +61,47 @@ namespace Zemoga.BlogEngine.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your Email.
+        /// </summary>
+        public static string AuthorEmail {
+            get {
+                return ResourceManager.GetString("AuthorEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your Name.
+        /// </summary>
+        public static string AuthorName {
+            get {
+                return ResourceManager.GetString("AuthorName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your Comment.
+        /// </summary>
+        public static string Comment {
+            get {
+                return ResourceManager.GetString("Comment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Write a new post.
         /// </summary>
         public static string Create {
             get {
                 return ResourceManager.GetString("Create", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit.
+        /// </summary>
+        public static string Edit {
+            get {
+                return ResourceManager.GetString("Edit", resourceCulture);
             }
         }
         
@@ -84,6 +120,24 @@ namespace Zemoga.BlogEngine.Resources {
         public static string PostDetails {
             get {
                 return ResourceManager.GetString("PostDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Publish.
+        /// </summary>
+        public static string Publish {
+            get {
+                return ResourceManager.GetString("Publish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Submit a comment.
+        /// </summary>
+        public static string SubmitAComment {
+            get {
+                return ResourceManager.GetString("SubmitAComment", resourceCulture);
             }
         }
         

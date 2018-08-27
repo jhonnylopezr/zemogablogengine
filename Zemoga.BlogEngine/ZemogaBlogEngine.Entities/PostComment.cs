@@ -8,6 +8,10 @@ namespace ZemogaBlogEngine.Entities
 {
     public class PostComment
     {
+        public PostComment()
+        {
+            this.CreatedOn = DateTime.Now;
+        }
         public int Id { get; set; }
         public int BlogPostId { get; set; }
         public string AuthorName { get; set; }

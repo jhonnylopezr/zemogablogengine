@@ -1,0 +1,47 @@
+﻿@model Zemoga.BlogEngine.Web.Models.BlogPosts.PostViewModel
+
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<div class="jumbotron">
+    <h1>@Model.Title</h1>
+    <p class="lead">@Zemoga.BlogEngine.Resources.Resources.Author: @Model.AspNetUser.FullName | @Zemoga.BlogEngine.Resources.Resources.PostedOn: @Model.LastModifiedOn.ToString()</p>
+    @if (Model.AllowToPublish)
+    {
+        <div class="col-md-2">
+            @using (Html.BeginForm("Publish", "BlogPosts", new { id = Model.Id }))
+            {
+                @Html.AntiForgeryToken()
+                <button type="submit" class="publish btn btn-primary" style="width: 100%">@Zemoga.BlogEngine.Resources.BlogPostResources.Publish</button>
+            }
+        </div>
+    }
+    @if (Model.AllowToEdit)
+    {
+        <div class="col-md-2">
+            <a href="@Url.Action("Edit", new { id = Model.Id })" class="edit btn btn-info" style="width: 100%">@Zemoga.BlogEngine.Resources.BlogPostResources.Edit</a>
+        </div>
+    }
+</div>
+
+<div class="row">
+
+    <div class="col-md-12">
+        @Html.Raw(Model.PostContent)
+    </div>
+
+    <hr />
+    <div class="col-md-12">
+        <h2>Comments</h2>
+        <hr />
+        @Html.Action("CommentForm", new { postId = Model.Id })
+        @Html.Action("PostCommentsList", new { id = Model.Id })
+    </div>
+
+</div>
+
+@section scripts{
+
+}
+
