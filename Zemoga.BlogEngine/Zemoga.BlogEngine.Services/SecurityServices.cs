@@ -8,6 +8,9 @@ using ZemogaBlogEngine.Entities;
 
 namespace Zemoga.BlogEngine.Services
 {
+    /// <summary>
+    /// Set of services of security (Interface)
+    /// </summary>
     public class SecurityServices : Service, ISecurityServices
     {
         public SecurityServices(IBlogEngineContext db) : base(db)
@@ -15,6 +18,11 @@ namespace Zemoga.BlogEngine.Services
 
         }
 
+        /// <summary>
+        /// Gets an user by UserName
+        /// </summary>
+        /// <param name="userName">Username</param>
+        /// <returns>AspNet user</returns>
         public AspNetUser GetUserByUserName(string userName)
         {
             return Context.AspNetUsers

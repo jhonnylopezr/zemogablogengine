@@ -27,7 +27,6 @@ namespace Zemoga.BlogEngine.Web.Controllers
         public ActionResult Create()
         {
             CreateBlogPostViewModel model = new CreateBlogPostViewModel();
-
             return View(model);
         }
 

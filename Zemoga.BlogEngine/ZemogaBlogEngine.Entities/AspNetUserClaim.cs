@@ -10,8 +10,6 @@ namespace ZemogaBlogEngine.Entities
     {
         public int Id { get; set; }
 
-        [Required]
-        [StringLength(128)]
         public string UserId { get; set; }
 
         public string ClaimType { get; set; }

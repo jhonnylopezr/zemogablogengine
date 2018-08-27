@@ -8,30 +8,69 @@ using System.Threading.Tasks;
 
 namespace Zemoga.BlogEngine.Services
 {
+    /// <summary>
+    /// Extension class with methods to extend IQueryable
+    /// </summary>
     public static class IQueryableExtensions
     {
         #region OrderBy extensions
 
+        /// <summary>
+        /// Sorts (ascendinglyy) a IQueryable instance by property name
+        /// </summary>
+        /// <typeparam name="T">Type of items in the IQueryable instance</typeparam>
+        /// <param name="source">IQueryable instance</param>
+        /// <param name="property">Property name to sort the collection</param>
+        /// <returns>IQueryable with Order by clause</returns>
         public static IQueryable<T> OrderBy<T>(this IQueryable<T> source, string property)
         {
             return ApplyOrder<T>(source, property, "OrderBy");
         }
 
+        /// <summary>
+        /// Sorts (descendingly) a IQueryable instance by property name
+        /// </summary>
+        /// <typeparam name="T">Type of items in the IQueryable instance</typeparam>
+        /// <param name="source">IQueryable instance</param>
+        /// <param name="property">Property name to sort the collection</param>
+        /// <returns>IQueryable with Order by clause</returns>
         public static IQueryable<T> OrderByDescending<T>(this IQueryable<T> source, string property)
         {
             return ApplyOrder<T>(source, property, "OrderByDescending");
         }
 
+        /// <summary>
+        /// Applies a ThenBy sorting (ascendingly) to an instance of IQueryable
+        /// </summary>
+        /// <typeparam name="T">Type of items in the IQueryable instance</typeparam>
+        /// <param name="source">IQueryable instance</param>
+        /// <param name="property">Property name to sort the collection</param>
+        /// <returns>IQueryable with Then by clause</returns>
         public static IQueryable<T> ThenBy<T>(this IQueryable<T> source, string property)
         {
             return ApplyOrder<T>(source, property, "ThenBy");
         }
 
+        /// <summary>
+        /// Applies a ThenBy sorting (descendingly) to an instance of IQueryable
+        /// </summary>
+        /// <typeparam name="T">Type of items in the IQueryable instance</typeparam>
+        /// <param name="source">IQueryable instance</param>
+        /// <param name="property">Property name to sort the collection</param>
+        /// <returns>IQueryable with Order by clause</returns>
         public static IQueryable<T> ThenByDescending<T>(this IQueryable<T> source, string property)
         {
             return ApplyOrder<T>(source, property, "ThenByDescending");
         }
 
+        /// <summary>
+        /// Apply sorting specifications to an IQueryable instance
+        /// </summary>
+        /// <typeparam name="T">Type of items in the IQueryable instance</typeparam>
+        /// <param name="source">IQueryable instance</param>
+        /// <param name="property">Property name to sort the collection</param>
+        /// <param name="methodName">One of the sorting method names (OrderBy, OrderByDescending, ThenBy, ThenByDescending)</param>
+        /// <returns></returns>
         static IQueryable<T> ApplyOrder<T>(IQueryable<T> source, string property, string methodName)
         {
             string[] props = property.Split('.');
