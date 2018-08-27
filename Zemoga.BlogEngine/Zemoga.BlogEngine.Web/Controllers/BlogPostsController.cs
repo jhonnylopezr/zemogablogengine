@@ -98,7 +98,6 @@ namespace Zemoga.BlogEngine.Web.Controllers
             return View(model);
         }
 
-        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CommentForm(CreateCommentViewModel model)
