@@ -17,12 +17,42 @@
             }
         </div>
     }
+    @if (Model.AllowToApprove)
+    {
+        <div class="col-md-2">
+            @using (Html.BeginForm("Approve", "BlogPosts", new { id = Model.Id }))
+            {
+                @Html.AntiForgeryToken()
+                <button type="submit" class="publish btn btn-success" style="width: 100%">@Zemoga.BlogEngine.Resources.BlogPostResources.Approve</button>
+            }
+        </div>
+    }
     @if (Model.AllowToEdit)
     {
         <div class="col-md-2">
             <a href="@Url.Action("Edit", new { id = Model.Id })" class="edit btn btn-info" style="width: 100%">@Zemoga.BlogEngine.Resources.BlogPostResources.Edit</a>
         </div>
     }
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        <p>
+            @Zemoga.BlogEngine.Resources.BlogPostResources.PublishingStatus:
+            @if (Model.PublishingStatus == ZemogaBlogEngine.Entities.PublishingStatusEnum.Created)
+            {
+                <span class="label label-info">@Model.PublishingStatusDescription</span>
+            }
+            else if (Model.PublishingStatus == ZemogaBlogEngine.Entities.PublishingStatusEnum.PendingPublishApproval)
+            {
+                <span class="label label-warning">@Model.PublishingStatusDescription</span>
+            }
+            else if (Model.PublishingStatus == ZemogaBlogEngine.Entities.PublishingStatusEnum.Published)
+            {
+                <span class="label label-success">@Model.PublishingStatusDescription (by @Model.Approver.FullName on @Model.ApprovedOn.Value.ToShortDateString())</span>
+            }
+        </p>
+    }
+
 </div>
 
 <div class="row">

@@ -16,7 +16,12 @@ namespace Zemoga.BlogEngine.Web.Models.BlogPosts
         public DateTime LastModifiedOn { get; set; }
         public bool IsPublished { get; set; }
         public AspNetUser AspNetUser { get; set; }
+        public AspNetUser Approver { get; set; }
+        public Nullable<DateTime> ApprovedOn { get; set; }
+        public PublishingStatusEnum PublishingStatus { get; set; }
+        public string PublishingStatusDescription { get; set; }
         public bool AllowToPublish { get; set; }
         public bool AllowToEdit { get; set; }
+        public bool AllowToApprove { get; set; }
     }
 }

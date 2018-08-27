@@ -14,6 +14,7 @@ namespace ZemogaBlogEngine.Entities
             AspNetUserLogins = new List<AspNetUserLogin>();
             BlogPosts = new List<BlogPost>();
             AspNetRoles = new List<AspNetRole>();
+            ApprovedPosts = new List<BlogPost>();
         }
 
         public string Id { get; set; }
@@ -34,5 +35,6 @@ namespace ZemogaBlogEngine.Entities
         public virtual ICollection<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual ICollection<BlogPost> BlogPosts { get; set; }
         public virtual ICollection<AspNetRole> AspNetRoles { get; set; }
+        public virtual ICollection<BlogPost> ApprovedPosts { get; set; }
     }
 }

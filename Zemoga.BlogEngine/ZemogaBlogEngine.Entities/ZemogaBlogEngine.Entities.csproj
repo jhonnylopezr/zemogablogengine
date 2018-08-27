@@ -66,6 +66,11 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Zemoga.BlogEngine.Resources\Zemoga.BlogEngine.Resources.csproj">
+      <Project>{6409812f-193b-4d83-b75f-f221c0ee1b90}</Project>
+      <Name>Zemoga.BlogEngine.Resources</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

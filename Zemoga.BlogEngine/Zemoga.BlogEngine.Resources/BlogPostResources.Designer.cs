@@ -61,6 +61,15 @@ namespace Zemoga.BlogEngine.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Approve.
+        /// </summary>
+        public static string Approve {
+            get {
+                return ResourceManager.GetString("Approve", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your Email.
         /// </summary>
         public static string AuthorEmail {
@@ -97,11 +106,29 @@ namespace Zemoga.BlogEngine.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Created.
+        /// </summary>
+        public static string CreatedStatus {
+            get {
+                return ResourceManager.GetString("CreatedStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit.
         /// </summary>
         public static string Edit {
             get {
                 return ResourceManager.GetString("Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pending publish approval.
+        /// </summary>
+        public static string PendingPublishApprovalStatus {
+            get {
+                return ResourceManager.GetString("PendingPublishApprovalStatus", resourceCulture);
             }
         }
         
@@ -129,6 +156,24 @@ namespace Zemoga.BlogEngine.Resources {
         public static string Publish {
             get {
                 return ResourceManager.GetString("Publish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Published.
+        /// </summary>
+        public static string PublishedStatus {
+            get {
+                return ResourceManager.GetString("PublishedStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Publishing Status.
+        /// </summary>
+        public static string PublishingStatus {
+            get {
+                return ResourceManager.GetString("PublishingStatus", resourceCulture);
             }
         }
         

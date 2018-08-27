@@ -70,6 +70,33 @@ namespace Zemoga.BlogEngine.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No results..
+        /// </summary>
+        public static string NoResults {
+            get {
+                return ResourceManager.GetString("NoResults", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can find here the blog posts pending for publishing approval.....
+        /// </summary>
+        public static string PendingForApprovalDescription {
+            get {
+                return ResourceManager.GetString("PendingForApprovalDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Posts pending for approval.
+        /// </summary>
+        public static string PendingForApprovalListing {
+            get {
+                return ResourceManager.GetString("PendingForApprovalListing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Posted on.
         /// </summary>
         public static string PostedOn {

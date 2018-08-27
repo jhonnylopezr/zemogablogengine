@@ -42,10 +42,18 @@ namespace Zemoga.BlogEngine.Services
         public List<BlogPost> GetAll(bool includeNotPublished)
         {
             return Context.BlogPosts
-                .Where(it => includeNotPublished || it.IsPublished)
+                .Where(it => includeNotPublished || it.PublishingStatus == PublishingStatusEnum.Published)
                 .OrderByDescending(it => it.CreatedOn)
                 .ToList();
 
+        }
+
+        public List<BlogPost> GetPendingForApprovalPosts()
+        {
+            return Context.BlogPosts
+                .Where(it => it.PublishingStatus == PublishingStatusEnum.PendingPublishApproval)
+                .OrderBy(it => it.CreatedOn)
+                .ToList();
         }
 
         public List<BlogPost> GetPosts(int startIndex = 0, int pageSize = 0)

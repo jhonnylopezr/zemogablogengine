@@ -1,16 +1,13 @@
-﻿@model Zemoga.BlogEngine.Web.Models.Home.IndexViewModel
+﻿@model Zemoga.BlogEngine.Web.Models.Home.PendingForApprovalViewModel
+
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = Zemoga.BlogEngine.Resources.Resources.PendingForApprovalListing;
 }
 
 <div class="jumbotron">
-    <h1>Zemoga Blog Engine</h1>
-    <p class="lead">You can find below our latest blog posts...</p>
-    @if (User.Identity.IsAuthenticated)
-    {
-        <p><a href="@Url.Action("Create", "BlogPosts")" class="btn btn-primary btn-lg">Click to create a new post &raquo;</a></p>
-
-    }
+    <h1>@Zemoga.BlogEngine.Resources.Resources.PendingForApprovalListing</h1>
+    <p class="lead">@Zemoga.BlogEngine.Resources.Resources.PendingForApprovalDescription</p>
+    
 </div>
 
 <div class="row">
@@ -30,7 +27,7 @@
                 @Zemoga.BlogEngine.Resources.Resources.Author: @item.AspNetUser.FullName
             </p>
             <small class="text-muted">@Zemoga.BlogEngine.Resources.Resources.PostedOn: @item.CreatedOn.ToShortDateString()</small>
-            <p><a class="btn btn-default" href="@Url.Action("Post", "BlogPosts", new { id = item.Id })">Read more &raquo;</a></p>
+            <p><a class="btn btn-default" href="@Url.Action("Post", "BlogPosts", new { id = item.Id })">View &raquo;</a></p>
         </div>
     }
 

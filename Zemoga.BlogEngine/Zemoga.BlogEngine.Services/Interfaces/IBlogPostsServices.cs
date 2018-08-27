@@ -15,5 +15,6 @@ namespace Zemoga.BlogEngine.Services.Interfaces
         int Add(BlogPost post);
         void Delete(BlogPost post);
         void Update(BlogPost post);
+        List<BlogPost> GetPendingForApprovalPosts();
     }
 }

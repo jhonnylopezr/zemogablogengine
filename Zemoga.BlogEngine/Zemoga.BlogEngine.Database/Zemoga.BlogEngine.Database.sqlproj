@@ -71,4 +71,7 @@
     <Build Include="dbo\Tables\BlogPosts.sql" />
     <Build Include="dbo\Tables\PostComments.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Script.PostDeployment.sql" />
+  </ItemGroup>
 </Project>

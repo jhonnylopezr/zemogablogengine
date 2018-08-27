@@ -231,6 +231,7 @@
     <Compile Include="Models\BlogPosts\PostCommentsViewModel.cs" />
     <Compile Include="Models\BlogPosts\PostViewModel.cs" />
     <Compile Include="Models\Home\IndexViewModel.cs" />
+    <Compile Include="Models\Home\PendingForApprovalViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -474,6 +475,7 @@
     <Content Include="Views\BlogPosts\PostCommentsList.cshtml" />
     <Content Include="Views\BlogPosts\CommentForm.cshtml" />
     <Content Include="Views\BlogPosts\Edit.cshtml" />
+    <Content Include="Views\Home\PendingForApproval.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

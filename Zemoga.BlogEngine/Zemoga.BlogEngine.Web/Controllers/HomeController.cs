@@ -24,6 +24,12 @@ namespace Zemoga.BlogEngine.Web.Controllers
             return View(model);
         }
 
+        public ActionResult PendingForApproval()
+        {
+            PendingForApprovalViewModel model = new PendingForApprovalViewModel();
+            model.BlogPosts = _blogPostsServices.GetPendingForApprovalPosts();
+            return View(model);
+        }
         
     }
 }

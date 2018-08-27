@@ -54,8 +54,9 @@ namespace Zemoga.BlogEngine.Web.Controllers
 
             PostViewModel model = Mapper.Map<BlogPost, PostViewModel>(post);
 
-            model.AllowToPublish = !model.IsPublished && (User.Identity.IsAuthenticated && User.Identity.Name == model.AspNetUser.UserName);
-            model.AllowToEdit = User.Identity.Name == model.AspNetUser.UserName;
+            model.AllowToPublish = model.PublishingStatus == PublishingStatusEnum.Created && (User.Identity.IsAuthenticated && User.Identity.Name == model.AspNetUser.UserName);
+            model.AllowToEdit = (model.PublishingStatus == PublishingStatusEnum.Created || model.PublishingStatus == PublishingStatusEnum.Published) && User.Identity.Name == model.AspNetUser.UserName;
+            model.AllowToApprove = model.PublishingStatus == PublishingStatusEnum.PendingPublishApproval && User.IsInRole("Editor");
 
             return View(model);
         }
@@ -66,8 +67,27 @@ namespace Zemoga.BlogEngine.Web.Controllers
         public ActionResult Publish(int id)
         {
             BlogPost post = _blogPostsServices.Find(id);
-            post.IsPublished = true;
+            post.PublishingStatus = PublishingStatusEnum.PendingPublishApproval;
             post.LastModifiedOn = DateTime.Now;
+
+            _blogPostsServices.Update(post);
+
+            return RedirectToAction("Post", new { id = id });
+        }
+
+        [Authorize(Roles = "Editor")]
+        [ValidateAntiForgeryToken()]
+        [HttpPost]
+        public ActionResult Approve(int id)
+        {
+            BlogPost post = _blogPostsServices.Find(id);
+            post.PublishingStatus = PublishingStatusEnum.Published;
+            post.LastModifiedOn = DateTime.Now;
+
+            AspNetUser user = _securityServices.GetUserByUserName(User.Identity.Name);
+
+            post.ApproverId = user.Id;
+            post.ApprovedOn = DateTime.Now;
 
             _blogPostsServices.Update(post);
 
@@ -119,7 +139,7 @@ namespace Zemoga.BlogEngine.Web.Controllers
         {
             BlogPost post = _blogPostsServices.Find(id);
 
-            if (post.AspNetUser.UserName != User.Identity.Name)
+            if (post.AspNetUser.UserName != User.Identity.Name || post.PublishingStatus == PublishingStatusEnum.PendingPublishApproval)
             {
                 return new HttpStatusCodeResult(System.Net.HttpStatusCode.Unauthorized);
             }
@@ -136,13 +156,13 @@ namespace Zemoga.BlogEngine.Web.Controllers
         {
             BlogPost post = _blogPostsServices.Find(model.Id);
 
-            if (post.AspNetUser.UserName != User.Identity.Name)
+            if (post.AspNetUser.UserName != User.Identity.Name || post.PublishingStatus == PublishingStatusEnum.PendingPublishApproval)
             {
                 return new HttpStatusCodeResult(System.Net.HttpStatusCode.Unauthorized);
             }
 
             Mapper.Map<EditPostViewModel, BlogPost>(model, post);
-            post.IsPublished = false;
+            post.PublishingStatus = PublishingStatusEnum.Created;
             _blogPostsServices.Update(post);
 
             return RedirectToAction("Post", new { id = model.Id });

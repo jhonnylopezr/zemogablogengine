@@ -120,6 +120,15 @@
   <data name="Author" xml:space="preserve">
     <value>Author</value>
   </data>
+  <data name="NoResults" xml:space="preserve">
+    <value>No results.</value>
+  </data>
+  <data name="PendingForApprovalDescription" xml:space="preserve">
+    <value>You can find here the blog posts pending for publishing approval....</value>
+  </data>
+  <data name="PendingForApprovalListing" xml:space="preserve">
+    <value>Posts pending for approval</value>
+  </data>
   <data name="PostedOn" xml:space="preserve">
     <value>Posted on</value>
   </data>
